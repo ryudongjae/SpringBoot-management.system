@@ -1,4 +1,8 @@
+com/example/java/project/project/repository/PersonRepository.java
+ com.example.java.project.project.repository.PersonRepository
 com/example/java/project/project/ProjectApplication.java
  com.example.java.project.project.ProjectApplication
 com/example/java/project/project/controller/HelloWorldContorller.java
  com.example.java.project.project.controller.HelloWorldContorller
+com/example/java/project/project/domain/Person.java
+ com.example.java.project.project.domain.Person

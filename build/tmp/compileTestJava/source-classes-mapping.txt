@@ -1,4 +1,0 @@
-com/example/java/project/project/controller/HelloWorldControllerTest.java
- com.example.java.project.project.controller.HelloWorldControllerTest
-com/example/java/project/project/ProjectApplicationTests.java
- com.example.java.project.project.ProjectApplicationTests
