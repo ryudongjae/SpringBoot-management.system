@@ -17,7 +17,7 @@ class PersonRepositoryTest {
     private PersonRepository personRepository;
 
     @Test
-    void Crud(){
+    void Crud() {
         Person person = new Person();
         person.setName("martin");
         person.setAge(23);
@@ -35,19 +35,18 @@ class PersonRepositoryTest {
         assertThat(people.get(0).getBloodtype()).isEqualTo("A");
 
     }
+
     @Test
-    void hashCodeAndEquals(){
-        Person person1 = new Person("martin",10,"A");
-        Person person2 = new Person("martin",10,"B");
-
-
+    void hashCodeAndEquals() {
+        Person person1 = new Person("martin", 10, "A");
+        Person person2 = new Person("martin", 10, "B");
 
 
         System.out.println(person1.equals(person2));
         System.out.println(person1.hashCode());
         System.out.println(person2.hashCode());
 
-        Map<Person,Integer>map = new HashMap<>();
+        Map<Person, Integer> map = new HashMap<>();
         map.put(person1, person1.getAge());
 
         System.out.println(map);

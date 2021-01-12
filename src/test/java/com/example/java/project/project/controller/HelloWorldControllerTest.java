@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 class HelloWorldControllerTest {
 
@@ -19,13 +20,15 @@ class HelloWorldControllerTest {
     private HelloWorldContorller helloWorldContorller;
 
     private MockMvc mockMvc;
+
     @Test
-   void helloworld() {
+    void helloworld() {
 //        System.out.println("test");
         System.out.println(helloWorldContorller.helloWorld());
 
 
     }
+
     @Test
     void mockmvcTest() throws Exception {
         mockMvc = MockMvcBuilders.standaloneSetup(helloWorldContorller).build();

@@ -17,7 +17,7 @@ class BlockRepositoryTest {
     private BlockRepository blockRepository;
 
     @Test
-    void crud(){
+    void crud() {
         Block block = new Block();
         block.setName("martin");
         block.setReason("친하지 않아서 ");
