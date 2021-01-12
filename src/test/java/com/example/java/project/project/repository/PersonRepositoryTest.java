@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -20,15 +22,11 @@ class PersonRepositoryTest {
         person.setName("martin");
         person.setAge(23);
         person.setBloodtype("A");
-        person.setHobby("movie");
-        person.setBirthday("1999.10.14");
-        person.setJob("developer");
-        person.setAddress("seoul");
-
 
         personRepository.save(person);
 
         System.out.println(personRepository.findAll());
+
         List<Person> people = personRepository.findAll();
 
         assertThat(people.size()).isEqualTo(1);
@@ -38,10 +36,24 @@ class PersonRepositoryTest {
 
     }
     @Test
-    void allArgsConstructer(){
-        Person person = new Perso
-    }
+    void hashCodeAndEquals(){
+        Person person1 = new Person("martin",10,"A");
+        Person person2 = new Person("martin",10,"B");
 
+
+
+
+        System.out.println(person1.equals(person2));
+        System.out.println(person1.hashCode());
+        System.out.println(person2.hashCode());
+
+        Map<Person,Integer>map = new HashMap<>();
+        map.put(person1, person1.getAge());
+
+        System.out.println(map);
+        System.out.println(map.get(person2));
+
+    }
 
 
 }

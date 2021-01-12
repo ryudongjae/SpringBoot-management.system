@@ -6,3 +6,7 @@ com/example/java/project/project/controller/HelloWorldContorller.java
  com.example.java.project.project.controller.HelloWorldContorller
 com/example/java/project/project/domain/Person.java
  com.example.java.project.project.domain.Person
+com/example/java/project/project/domain/Block.java
+ com.example.java.project.project.domain.Block
+com/example/java/project/project/repository/BlockRepository.java
+ com.example.java.project.project.repository.BlockRepository

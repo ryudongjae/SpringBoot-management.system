@@ -1,5 +1,6 @@
 package com.example.java.project.project.domain;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
@@ -8,24 +9,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-@Setter
-@Getter
-@ToString
-
+@NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
+@Getter
+@Setter
+@EqualsAndHashCode
+@ToString
 
 public class Person {
     @Id
     @GeneratedValue
     private Long Id;
+
     @NonNull
     private String name;
+
     @NonNull
     private int age;
-    @NonNull
+
+
     private String hobby;
 
+    @NonNull
     private String bloodtype;
 
     private String address;
@@ -35,6 +41,7 @@ public class Person {
     @ToString.Exclude
     private String job;
 
+    private boolean block;
 
 
 }
