@@ -39,7 +39,7 @@ class PersonRepositoryTest {
     }
     @Test
     void allArgsConstructer(){
-        Person person = new Person
+        Person person = new Perso
     }
 
 
