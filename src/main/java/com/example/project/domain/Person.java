@@ -7,17 +7,16 @@ import lombok.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @RequiredArgsConstructor
-@Getter
-@Setter
-@EqualsAndHashCode
-@ToString
+@Data
 
 public class Person {
+
     @Id
     @GeneratedValue
     private Long Id;
@@ -32,7 +31,7 @@ public class Person {
     private String hobby;
 
     @NonNull
-    private String bloodtype;
+    private String bloodType;
 
     private String address;
 
@@ -40,8 +39,8 @@ public class Person {
 
     @ToString.Exclude
     private String job;
-
-    private boolean block;
+    @OneToOne
+    private Block block;
 
 
 }
