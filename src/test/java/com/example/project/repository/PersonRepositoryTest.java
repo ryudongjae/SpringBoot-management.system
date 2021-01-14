@@ -3,10 +3,12 @@ package com.example.project.repository;
 
 
 import com.example.project.domain.Person;
+import org.apache.tomcat.jni.Local;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 
 import java.util.List;
@@ -56,6 +58,44 @@ class PersonRepositoryTest {
         System.out.println(map.get(person2));
 
     }
+    @Test
+    void findByBloodType(){
+        givenPerson("martin",10,"A");
+        givenPerson("david",9,"B");
+        givenPerson("dennis", 11, "AB");
+        givenPerson("kai",12,"AB");
+        givenPerson("jack",22,"AB");
+        givenPerson("john",5,"B");
 
+
+        List<Person> result = personRepository.findByBloodType("B");
+
+        result.forEach(System.out::println);
+
+    }
+
+    @Test
+    void findByBirthdayBetween(){
+        givenPerson("martin",10,"A",LocalDate.of(1992,3,8));
+        givenPerson("david",9,"B",LocalDate.of(1991,8,2));
+        givenPerson("dennis", 11, "AB", LocalDate.of(1991,8,4));
+        givenPerson("kai",12,"AB",LocalDate.of(1991,9,3));
+        givenPerson("jack",22,"AB",LocalDate.of(1991,8,22));
+
+
+        List<Person> result = personRepository.findByBirthdayBetween(LocalDate.of(1991,8,1), LocalDate.of(1991,8,31));
+
+       result.forEach(System.out::println);
+    }
+
+    private void givenPerson(String name,int age, String bloodType){
+        givenPerson(name,age,bloodType,null);
+    }
+
+    private void givenPerson(String name,int age,String bloodType,LocalDate birthday){
+        Person person = new Person(name,age,bloodType);
+        person.setBirthday(birthday);
+        personRepository.save(person);
+    }
 
 }

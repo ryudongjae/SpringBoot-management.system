@@ -1,10 +1,10 @@
 com/example/project/controller/HelloWorldControllerTest.java
  com.example.project.controller.HelloWorldControllerTest
-com/example/project/ProjectApplicationTests.java
- com.example.project.ProjectApplicationTests
-com/example/project/repository/BlockRepositoryTest.java
- com.example.project.repository.BlockRepositoryTest
 com/example/project/repository/PersonRepositoryTest.java
  com.example.project.repository.PersonRepositoryTest
+com/example/project/repository/BlockRepositoryTest.java
+ com.example.project.repository.BlockRepositoryTest
+com/example/project/ProjectApplicationTests.java
+ com.example.project.ProjectApplicationTests
 com/example/project/service/PersonServiceTest.java
  com.example.project.service.PersonServiceTest
