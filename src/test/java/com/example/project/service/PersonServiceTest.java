@@ -6,10 +6,13 @@ import com.example.project.domain.Person;
 import com.example.project.repository.BlockRepository;
 import com.example.project.repository.PersonRepository;
 import com.example.project.servisce.PersonService;
+import org.apache.tomcat.jni.Local;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -25,41 +28,67 @@ class PersonServiceTest {
     @Test
     void getPeopleExcludeBlocks() {
         givenPeople();
-        givenBlocks();
+
 
         List<Person> result = personService.getPeopleExcludeBlocks();
 
-        //System.out.println(result);
+
 
         result.forEach(System.out::println);
+    }
+    @Test
+    void cascadeTest(){
+        givenPeople();
+
+        List<Person> result = personRepository.findAll();
+       // result.forEach(System.out::println);
+
+        Person person = result.get(3);
+        person.getBlock().setStartDate(LocalDate.now());
+        person.getBlock().setEndData(LocalDate.now());
+
+        personRepository.save(person);
+        personRepository.findAll().forEach(System.out::println);
+
+        personRepository.delete(person);
+        personRepository.findAll().forEach(System.out::println);
+        blockRepository.findAll().forEach(System.out::println);
+
+        person.setBlock(null);
+        personRepository.save(person);
+        personRepository.findAll().forEach(System.out::println);
+        blockRepository.findAll().forEach(System.out::println);
+
+    }
+    @Test
+    void getPerson(){
+        givenPeople();
+
+        Person person = personService.getPerson(3L);
     }
 
 
 
     private void givenPeople() {
-        givenBlockPerson("martin",10,"A");
-        givenPerson("david",22,"B");
-        givenPerson("cris",33,"O");
-        givenPerson("dennis",21,"AB");
+        givenPerson("martin",10,"A");
+        givenPerson("david",9,"B");
+        givenBlockPerson("cris",8,"O");
+        givenBlockPerson("dennis",11,"AB");
 
     }
-    private void givenBlocks() {
-        givenBlocks("martin");
-    }
+
+
     private void givenPerson(String name, int age, String  bloodType) {
         personRepository.save(new Person(name,age,bloodType));
 
     }
     private void givenBlockPerson(String name,int age, String bloodType){
         Person blockPerson = new Person(name,age,bloodType);
-        blockPerson.setBlock(givenBlocks(name));
+        blockPerson.setBlock(new Block(name));
 
 
 
         personRepository.save(blockPerson);
-    }
-    private Block givenBlocks(String name) {
-      return   blockRepository.save(new Block(name));
     }
 
 }

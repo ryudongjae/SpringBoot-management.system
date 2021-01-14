@@ -2,12 +2,12 @@ com/example/project/repository/PersonRepository.java
  com.example.project.repository.PersonRepository
 com/example/project/repository/BlockRepository.java
  com.example.project.repository.BlockRepository
-com/example/project/domain/Block.java
- com.example.project.domain.Block
-com/example/project/controller/HelloWorldContorller.java
- com.example.project.controller.HelloWorldContorller
 com/example/project/ProjectApplication.java
  com.example.project.ProjectApplication
+com/example/project/controller/HelloWorldContorller.java
+ com.example.project.controller.HelloWorldContorller
+com/example/project/domain/Block.java
+ com.example.project.domain.Block
 com/example/project/domain/Person.java
  com.example.project.domain.Person
 com/example/project/servisce/PersonService.java

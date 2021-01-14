@@ -4,10 +4,8 @@ package com.example.project.domain;
 import lombok.*;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @NoArgsConstructor
@@ -16,7 +14,6 @@ import javax.persistence.OneToOne;
 @Data
 
 public class Person {
-
     @Id
     @GeneratedValue
     private Long Id;
@@ -35,11 +32,14 @@ public class Person {
 
     private String address;
 
-    private String birthday;
+    private LocalDate birthday;
+
+    private String job;
 
     @ToString.Exclude
-    private String job;
-    @OneToOne
+    private String phoneNumber;
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true , fetch = FetchType.EAGER )
     private Block block;
 
 

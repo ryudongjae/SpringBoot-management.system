@@ -1,10 +1,7 @@
 package com.example.project.domain;
 
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 
 import javax.persistence.Entity;
@@ -16,7 +13,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @RequiredArgsConstructor
-
+@AllArgsConstructor
 public class Block {
     @Id
     @GeneratedValue
