@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity
-@Data
+@Data //@Getter @Setter @RequiredArgsConstructor @ToString @EqualsAndHashCode.
 @NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor

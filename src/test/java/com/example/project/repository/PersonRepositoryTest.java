@@ -3,6 +3,7 @@ package com.example.project.repository;
 
 
 import com.example.project.domain.Person;
+import com.example.project.domain.dto.Birthday;
 import org.apache.tomcat.jni.Local;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,8 @@ class PersonRepositoryTest {
     }
 
     @Test
+    //해시 코드가 동일하면 ,같은 객체라는 것을 의미 한다.
+    //*Equal:해당 객체가 같은 값을 가지고 있다는 것을 의미함
     void hashCodeAndEquals() {
         Person person1 = new Person("martin", 10, "A");
         Person person2 = new Person("martin", 10, "B");
@@ -76,14 +79,14 @@ class PersonRepositoryTest {
 
     @Test
     void findByBirthdayBetween(){
-        givenPerson("martin",10,"A",LocalDate.of(1992,3,8));
+        givenPerson("martin",10,"A",LocalDate.of(1992,8,15));
         givenPerson("david",9,"B",LocalDate.of(1991,8,2));
         givenPerson("dennis", 11, "AB", LocalDate.of(1991,8,4));
-        givenPerson("kai",12,"AB",LocalDate.of(1991,9,3));
-        givenPerson("jack",22,"AB",LocalDate.of(1991,8,22));
+        givenPerson("kai",12,"AB",LocalDate.of(1999,9,3));
+        givenPerson("jack",22,"AB",LocalDate.of(1999,8,22));
 
 
-        List<Person> result = personRepository.findByBirthdayBetween(LocalDate.of(1991,8,1), LocalDate.of(1991,8,31));
+        List<Person> result = personRepository.findByMonthOfBirthday(8);
 
        result.forEach(System.out::println);
     }
@@ -94,7 +97,9 @@ class PersonRepositoryTest {
 
     private void givenPerson(String name,int age,String bloodType,LocalDate birthday){
         Person person = new Person(name,age,bloodType);
-        person.setBirthday(birthday);
+        person.setBirthday(new Birthday(birthday));
+
+
         personRepository.save(person);
     }
 

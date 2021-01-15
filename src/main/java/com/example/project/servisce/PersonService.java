@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-@Slf4j
+@Slf4j//어노테이션을 적용하면 log.debug() 만으로 쉽게 로그를 확인할 수 있다.
 public class PersonService {
     @Autowired
     private PersonRepository personRepository;

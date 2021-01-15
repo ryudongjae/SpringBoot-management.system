@@ -15,7 +15,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
 class BlockRepositoryTest {
-    @Autowired
+    @Autowired//각 상황의 타입에 맞는 ioC컨테이너 안에 존재하는 Bean을 자동으로 주입해준다.
     private BlockRepository blockRepository;
 
 
