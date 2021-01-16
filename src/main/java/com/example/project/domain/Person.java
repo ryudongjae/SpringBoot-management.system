@@ -1,12 +1,16 @@
 package com.example.project.domain;
 
 
+import com.example.project.controller.dto.PersonDto;
 import com.example.project.domain.dto.Birthday;
 import lombok.*;
+import org.springframework.util.StringUtils;
 
 
 import javax.persistence.*;
 import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 @Entity
@@ -21,15 +25,19 @@ public class Person {
     private Long id;
 
     @NonNull
+    @NotEmpty
+    @Column(nullable = false)
     private String name;
 
     @NonNull
+    @Min(1)
     private int age;
 
 
     private String hobby;
 
     @NonNull
+    @Column(nullable =false)
     private String bloodType;
 
     private String address;
@@ -46,6 +54,26 @@ public class Person {
     @ToString.Exclude
     private Block block;
 
+    public void set(PersonDto personDto){
+        if(personDto.getAge() !=0){
+            this.setAge(personDto.getAge());
+        }
+        if(!StringUtils.isEmpty(personDto.getHobby())){
+            this.setHobby(personDto.getHobby());
+        }
+        if(!StringUtils.isEmpty(personDto.getBloodType())){
+            this.setBloodType(personDto.getBloodType());
+        }
+        if(!StringUtils.isEmpty(personDto.getAddress())){
+            this.setAddress(personDto.getAddress());
+        }
+        if(!StringUtils.isEmpty(personDto.getJob())){
+            this.setJob(personDto.getJob());
+        }
+        if(!StringUtils.isEmpty(personDto.getPhoneNumber())){
+            this.setJob(personDto.getJob());
+        }
+    }
 
 }
 //orphanRemoval:관련 entity의 relation이 사라질 때,entity를 함께 삭제 해줌

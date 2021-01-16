@@ -3,21 +3,11 @@ package com.example.project.repository;
 
 
 import com.example.project.domain.Person;
-import com.example.project.domain.dto.Birthday;
-import org.apache.tomcat.jni.Local;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.stereotype.Repository;
-
 import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.util.HashMap;
-
 import java.util.List;
-import java.util.Map;
-
-import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Transactional
@@ -41,9 +31,9 @@ class PersonRepositoryTest {
         assertThat(result.get(0).getName()).isEqualTo("john");
         assertThat(result.get(0).getAge()).isEqualTo(10);
         assertThat(result.get(0).getBloodType()).isEqualTo("A");
+
+
     }
-
-
     @Test
     void findByBloodType(){
         List<Person> result = personRepository.findByBloodType("A");
@@ -52,12 +42,7 @@ class PersonRepositoryTest {
         assertThat(result.get(0).getName()).isEqualTo("martin");
         assertThat(result.get(1).getName()).isEqualTo("jack");
 
-
-
-
     }
-
-
 
     @Test
     void findByBirthdayBetween(){
@@ -68,17 +53,4 @@ class PersonRepositoryTest {
         assertThat(result.get(1).getName()).isEqualTo("kai");
 
     }
-
-    private void givenPerson(String name,int age, String bloodType){
-        givenPerson(name,age,bloodType,null);
-    }
-
-    private void givenPerson(String name,int age,String bloodType,LocalDate birthday){
-        Person person = new Person(name,age,bloodType);
-        person.setBirthday(new Birthday(birthday));
-
-
-        personRepository.save(person);
-    }
-
 }
