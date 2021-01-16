@@ -1,5 +1,5 @@
-com/example/project/repository/PersonRepository.java
- com.example.project.repository.PersonRepository
+com/example/project/domain/Person.java
+ com.example.project.domain.Person
 com/example/project/controller/dto/PersonDto.java
  com.example.project.controller.dto.PersonDto
 com/example/project/repository/BlockRepository.java
@@ -12,8 +12,8 @@ com/example/project/controller/HelloWorldContorller.java
  com.example.project.controller.HelloWorldContorller
 com/example/project/ProjectApplication.java
  com.example.project.ProjectApplication
-com/example/project/domain/Person.java
- com.example.project.domain.Person
+com/example/project/repository/PersonRepository.java
+ com.example.project.repository.PersonRepository
 com/example/project/controller/PersonController.java
  com.example.project.controller.PersonController
 com/example/project/servisce/PersonService.java

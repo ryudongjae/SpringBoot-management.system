@@ -1,9 +1,6 @@
 package com.example.project.domain;
 
-
 import lombok.*;
-
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

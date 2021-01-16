@@ -4,21 +4,20 @@ package com.example.project.domain;
 import com.example.project.controller.dto.PersonDto;
 import com.example.project.domain.dto.Birthday;
 import lombok.*;
+import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.Where;
 import org.springframework.util.StringUtils;
-
-
 import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
-import java.time.LocalDate;
 
 @Entity
 @NoArgsConstructor//아무런 파라미터를 가지지 않은 생성자를 생성해줌
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Data  //@Getter @Setter @RequiredArgsConstructor @ToString @EqualsAndHashCode.를 한번에 선언해줌
-
+@Where(clause = "deleted= false")
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,6 +48,9 @@ public class Person {
 
     @ToString.Exclude //출력값에서 보이지 않도록 설정하는
     private String phoneNumber;
+
+    @ColumnDefault("0")
+    private boolean deleted;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true )
     @ToString.Exclude

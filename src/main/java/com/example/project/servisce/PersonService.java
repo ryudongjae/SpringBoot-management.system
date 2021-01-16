@@ -1,21 +1,13 @@
 package com.example.project.servisce;
 
-
-
-
 import com.example.project.controller.dto.PersonDto;
 import com.example.project.domain.Person;
-import com.example.project.domain.dto.Birthday;
-import com.example.project.repository.BlockRepository;
 import com.example.project.repository.PersonRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @Slf4j//어노테이션을 적용하면 log.debug() 만으로 쉽게 로그를 확인할 수 있다.
@@ -67,6 +59,15 @@ public class PersonService {
         Person person = personRepository.findById(id).orElseThrow(() -> new RuntimeException("아이디가 존재하지 않습니다."));
 
         person.setName(name);
+
+        personRepository.save(person);
+    }
+    @Transactional
+    public void delete(Long id){
+
+        Person person= personRepository.findById(id).orElseThrow(()-> new RuntimeException("아이디가 존재하지 않습니다."));
+
+        person.setDeleted(true);
 
         personRepository.save(person);
     }

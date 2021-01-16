@@ -1,7 +1,5 @@
 package com.example.project.repository;
 
-
-
 import com.example.project.domain.Person;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
