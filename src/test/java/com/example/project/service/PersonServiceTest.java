@@ -79,9 +79,9 @@ class PersonServiceTest {
     private void givenPeople() {
         givenPerson("martin",10,"A");
         givenPerson("david",9,"B");
-        givenBlockPerson("martin",8,"O");
-        givenBlockPerson("dennis",11,"AB");
-        givenBlockPerson("kai",12,"AB");
+        givenBlockPerson("dennis",8,"O");
+        givenBlockPerson("kai",11,"AB");
+        givenBlockPerson("jack",12,"A");
 
     }
 
