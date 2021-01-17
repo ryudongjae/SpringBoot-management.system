@@ -11,6 +11,7 @@ import javax.persistence.*;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
+import java.time.LocalDate;
 
 @Entity
 @NoArgsConstructor//아무런 파라미터를 가지지 않은 생성자를 생성해줌
@@ -28,16 +29,8 @@ public class Person {
     @Column(nullable = false)
     private String name;
 
-    @NonNull
-    @Min(1)
-    private int age;
-
-
     private String hobby;
 
-    @NonNull
-    @Column(nullable =false)
-    private String bloodType;
 
     private String address;
     @Embedded
@@ -46,25 +39,16 @@ public class Person {
 
     private String job;
 
-    @ToString.Exclude //출력값에서 보이지 않도록 설정하는
+
     private String phoneNumber;
 
     @ColumnDefault("0")
     private boolean deleted;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true )
-    @ToString.Exclude
-    private Block block;
 
     public void set(PersonDto personDto){
-        if(personDto.getAge() !=0){
-            this.setAge(personDto.getAge());
-        }
         if(!StringUtils.isEmpty(personDto.getHobby())){
             this.setHobby(personDto.getHobby());
-        }
-        if(!StringUtils.isEmpty(personDto.getBloodType())){
-            this.setBloodType(personDto.getBloodType());
         }
         if(!StringUtils.isEmpty(personDto.getAddress())){
             this.setAddress(personDto.getAddress());
@@ -73,8 +57,28 @@ public class Person {
             this.setJob(personDto.getJob());
         }
         if(!StringUtils.isEmpty(personDto.getPhoneNumber())){
-            this.setJob(personDto.getJob());
+            this.setPhoneNumber(personDto.getPhoneNumber());
         }
+        if(personDto.getBirthday() !=null){
+            this.setBirthday(Birthday.of(personDto.getBirthday()));
+        }
+
+    }
+
+
+
+
+    public Integer getAge(){
+        if(this.birthday !=null){
+            return LocalDate.now().getYear() - this.birthday.getYearOfBirthday() +1;
+        }else{
+            return null;
+        }
+
+    }
+
+    public boolean isBirthdayToday(){
+        return LocalDate.now().equals(LocalDate.of(this.birthday.getYearOfBirthday(),this.birthday.getMonthOfBirthday(),this.birthday.getDayOfBirthday()));
     }
 
 }

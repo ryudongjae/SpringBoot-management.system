@@ -16,12 +16,7 @@ public class PersonService {
     private PersonRepository personRepository;
 
 
-    public List<Person> getPeopleExcludeBlocks() {
-        List<Person> people = personRepository.findAll();
 
-        return personRepository.findByBlockIsNull();
-
-    }
 
     public List<Person> getPeopleByName(String name){
 
@@ -39,7 +34,10 @@ public class PersonService {
         return person;
     }
     @Transactional
-    public void put(Person person){
+    public void put(PersonDto personDto){
+        Person person = new Person();
+        person.set(personDto);
+        person.setName(personDto.getName());
         personRepository.save(person);
     }
 

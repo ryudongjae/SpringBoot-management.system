@@ -15,16 +15,7 @@ class PersonServiceTest {
     @Autowired
     private PersonService personService;
 
-    @Test
-    void getPeopleExcludeBlocks() {
-        List<Person> result = personService.getPeopleExcludeBlocks();
 
-        assertThat(result.size()).isEqualTo(3);
-        assertThat(result.get(0).getName()).isEqualTo("martin");
-        assertThat(result.get(1).getName()).isEqualTo("benni");
-        assertThat(result.get(2).getName()).isEqualTo("kai");
-
-    }
     @Test
     void getPeopleByName(){
 
