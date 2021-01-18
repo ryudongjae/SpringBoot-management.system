@@ -15,8 +15,8 @@ import java.time.LocalDate;
 
 @Entity
 @NoArgsConstructor//아무런 파라미터를 가지지 않은 생성자를 생성해줌
-@AllArgsConstructor
-@RequiredArgsConstructor
+@AllArgsConstructor//전체 field variable을 파라미터로 가지는 생성자를 생성해준다.
+@RequiredArgsConstructor//필요한 field variable을 @NonNull로 선언하거,해당 파라미터를 가지는 생성자를 생성해줌
 @Data  //@Getter @Setter @RequiredArgsConstructor @ToString @EqualsAndHashCode.를 한번에 선언해줌
 @Where(clause = "deleted= false")
 public class Person {

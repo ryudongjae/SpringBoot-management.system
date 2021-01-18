@@ -30,7 +30,7 @@ public class PersonService {
 //        Person person = personRepository.findById(id).get();
 //        System.out.println("person: "+ person);
         Person person =personRepository.findById(id).orElse(null);
-        log.info("person:{}"+ person); //프로덕션에 배포가 되었을때 system.out의 형태는 모든로그가 출력되지만 로그형식은 출력을 제한 할 수 있다.
+//        log.info("person:{}"+ person); //프로덕션에 배포가 되었을때 system.out의 형태는 모든로그가 출력되지만 로그형식은 출력을 제한 할 수 있다.
         return person;
     }
     @Transactional
@@ -38,6 +38,7 @@ public class PersonService {
         Person person = new Person();
         person.set(personDto);
         person.setName(personDto.getName());
+
         personRepository.save(person);
     }
 
@@ -48,7 +49,6 @@ public class PersonService {
             throw new RuntimeException("이름이 다릅니다.");
         }
         person.set(personDto);
-
         personRepository.save(person);
     }
 
@@ -69,4 +69,5 @@ public class PersonService {
 
         personRepository.save(person);
     }
+
 }

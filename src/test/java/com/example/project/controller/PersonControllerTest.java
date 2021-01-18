@@ -58,7 +58,8 @@ class PersonControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.hobby").isEmpty())
-                .andExpect(jsonPath("$.address").isEmpty())
+                .andExpect(jsonPath("$." +
+                        "address").isEmpty())
                 .andExpect(jsonPath("$.birthday").value("1991-08-15"))
                 .andExpect(jsonPath("$.job").isEmpty())
                 .andExpect(jsonPath("$.phoneNumber").isEmpty())

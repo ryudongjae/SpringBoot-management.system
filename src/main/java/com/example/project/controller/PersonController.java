@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/api/person")
-@Slf4j
+@Slf4j //로그확인
 public class PersonController {
     @Autowired
     private PersonService personService;
@@ -29,21 +29,25 @@ public class PersonController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public void postPerson(@RequestBody PersonDto personDto) {
+
         personService.put(personDto);
     }
 
     @PutMapping("/{id}")
     public void modify(@PathVariable  Long id,@RequestBody PersonDto personDto){
+
         personService.modify(id,personDto);
     }
 
     @PatchMapping("/{id}")
     public void modifyPerson(@PathVariable Long id , String name){
+
         personService.modify(id,name);
     }
 
     @DeleteMapping("/{id}")
     public void deletePerson(@PathVariable Long id){
+
         personService.delete(id);
     }
 }
