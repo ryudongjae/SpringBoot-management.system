@@ -12,10 +12,6 @@
         <module name="project.test" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="11">
-      <module name="com.example.adsad" target="11" />
-      <module name="com.example.adsad.main" target="11" />
-      <module name="com.example.adsad.test" target="11" />
-    </bytecodeTargetLevel>
+    <bytecodeTargetLevel target="11" />
   </component>
 </project>

@@ -2,6 +2,8 @@ package com.example.project.servisce;
 
 import com.example.project.controller.dto.PersonDto;
 import com.example.project.domain.Person;
+import com.example.project.exception.PersonNotFoundException;
+import com.example.project.exception.RenameNotPermittedException;
 import com.example.project.repository.PersonRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,10 +45,10 @@ public class PersonService {
     }
 
     public void modify(Long id, PersonDto personDto) {
-        Person person = personRepository.findById(id).orElseThrow(()-> new RuntimeException("아이디가 존재하지 않습니다"));
+        Person person = personRepository.findById(id).orElseThrow(PersonNotFoundException::new);
 
         if(!person.getName().equals(personDto.getName())){
-            throw new RuntimeException("이름이 다릅니다.");
+            throw new RenameNotPermittedException();
         }
         person.set(personDto);
         personRepository.save(person);
@@ -54,7 +56,7 @@ public class PersonService {
 
     @Transactional
     public void modify(Long id, String name){
-        Person person = personRepository.findById(id).orElseThrow(() -> new RuntimeException("아이디가 존재하지 않습니다."));
+        Person person = personRepository.findById(id).orElseThrow(PersonNotFoundException::new);
 
         person.setName(name);
 
@@ -63,7 +65,7 @@ public class PersonService {
     @Transactional
     public void delete(Long id){
 
-        Person person= personRepository.findById(id).orElseThrow(()-> new RuntimeException("아이디가 존재하지 않습니다."));
+        Person person= personRepository.findById(id).orElseThrow(PersonNotFoundException::new);
 
         person.setDeleted(true);
 
