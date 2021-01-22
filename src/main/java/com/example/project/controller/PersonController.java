@@ -2,6 +2,7 @@ package com.example.project.controller;
 
 import com.example.project.controller.dto.PersonDto;
 import com.example.project.domain.Person;
+import com.example.project.exception.PersonNotFoundException;
 import com.example.project.exception.RenameNotPermittedException;
 import com.example.project.exception.dto.ErrorResponse;
 import com.example.project.repository.PersonRepository;
@@ -19,8 +20,7 @@ public class PersonController {
     @Autowired
     private PersonService personService;
 
-    @Autowired
-    private PersonRepository personRepository;
+
 
 //    @RequestMapping(method = RequestMethod.GET)
     @GetMapping("/{id}")
@@ -56,5 +56,10 @@ public class PersonController {
     @ExceptionHandler(value = RenameNotPermittedException.class)
     public ResponseEntity<ErrorResponse> handleRenameNoPermittedException(RenameNotPermittedException ex){
         return new ResponseEntity<>(ErrorResponse.of(HttpStatus.BAD_REQUEST.value(),ex.getMessage()),HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(value = PersonNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handlePersonNotFoundException(PersonNotFoundException ex){
+        return  new ResponseEntity<>(ErrorResponse.of(HttpStatus.BAD_REQUEST.value(), ex.getMessage()),HttpStatus.BAD_REQUEST);
     }
 }

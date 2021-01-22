@@ -19,9 +19,9 @@ com/example/project/exception/PersonNotFoundException.java
  com.example.project.exception.PersonNotFoundException
 com/example/project/exception/dto/ErrorResponse.java
  com.example.project.exception.dto.ErrorResponse
-com/example/project/controller/PersonController.java
- com.example.project.controller.PersonController
-com/example/project/servisce/PersonService.java
- com.example.project.servisce.PersonService
 com/example/project/exception/RenameNotPermittedException.java
  com.example.project.exception.RenameNotPermittedException
+com/example/project/servisce/PersonService.java
+ com.example.project.servisce.PersonService
+com/example/project/controller/PersonController.java
+ com.example.project.controller.PersonController

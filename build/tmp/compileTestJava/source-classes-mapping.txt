@@ -4,11 +4,11 @@ com/example/project/controller/HelloWorldControllerTest.java
  com.example.project.controller.HelloWorldControllerTest
 com/example/project/repository/PersonRepositoryTest.java
  com.example.project.repository.PersonRepositoryTest
-com/example/project/controller/PersonControllerTest.java
- com.example.project.controller.PersonControllerTest
 com/example/project/service/PersonServiceTest.java
  com.example.project.service.PersonServiceTest
  com.example.project.service.PersonServiceTest$IsNameWillBeUpdated
  com.example.project.service.PersonServiceTest$IsPersonWillBeDeleted
  com.example.project.service.PersonServiceTest$IsPersonWillBeInserted
  com.example.project.service.PersonServiceTest$IsPersonWillBeUpdated
+com/example/project/controller/PersonControllerTest.java
+ com.example.project.controller.PersonControllerTest
