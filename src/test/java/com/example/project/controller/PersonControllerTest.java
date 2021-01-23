@@ -17,7 +17,6 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.util.NestedServletException;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -91,6 +90,17 @@ class PersonControllerTest {
 
     }
     @Test
+    void postPersonIfNameIsNull() throws Exception{
+        PersonDto dto = new PersonDto();
+
+        mockMvc.perform(
+                MockMvcRequestBuilders.post("/api/person")
+                .contentType(MediaType.APPLICATION_JSON_UTF8)
+                .content(toJsonString(dto)))
+                .andExpect(jsonPath("$.code").value(500))
+                .andExpect(jsonPath("$.message").value("알 수 없는 서버 오류가 발생하였습니다."));
+    }
+    @Test
     void modifyPerson() throws Exception{
         PersonDto dto = PersonDto.of("martin","programming","판교",LocalDate.now(),"programmer","010-1111-2222");
 
@@ -140,6 +150,7 @@ class PersonControllerTest {
                 .andExpect(jsonPath("$.message").value("Person Entity 존재하지 않습니다."));
 
     }
+
     @Test
     void modifyName() throws Exception{
 
